@@ -8,7 +8,7 @@
 	 Filename:     	
 	===========================================================================
 	.DESCRIPTION
-		A description of the file.
+		Gets list of branch users based on the branch name by get-aduser and populating it with a get-adorganizationalunit cmdlet.
 #>
 Import-Module ActiveDirectory
 
