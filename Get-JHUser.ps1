@@ -2,7 +2,8 @@
 
   param($dn)
   $eleCount = ($dn -split ',').Count
-  ($dn -split ',')[$eleCount - 2]
+  $dn = ($dn -split ',')[$eleCount - 2]
+  $dn.TrimStart('dc=') + '.com'
 }
 
 Function Get-JhUser {
@@ -15,8 +16,7 @@ Function Get-JhUser {
   BEGIN{}
   PROCESS
   {
-    $userDom = Pull-DomainNameFromDN -dn $DistinguishedUsername
-    $domainName = $userDom.TrimStart('dc=') + '.com'
+    $domainName = Pull-DomainNameFromDN -dn $DistinguishedUsername
     Get-ADUser $DistinguishedUsername -Server $domainName
   }
   END{}
