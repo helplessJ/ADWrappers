@@ -31,8 +31,8 @@ function List-ADBranchUsers
 	PROCESS
 	{
 		
-		foreach ($userOU in $targetOU) {
-			Get-ADUser -Filter * -SearchBase $userOU -Properties $Properties | Where-Object {$_.enabled -eq $true}
-		}
+    foreach ($userOU in $targetOU) {
+      Get-ADUser -Filter * -SearchBase $userOU -Properties $Properties
+    }
 	}
 }
