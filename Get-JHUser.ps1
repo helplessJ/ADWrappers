@@ -16,13 +16,7 @@ Function Get-JhUser {
   PROCESS
   {
     $userDom = Pull-DomainNameFromDN -dn $DistinguishedUsername
-    IF($userDom -match 'ehm')
-    {
-      $domainName = 'ehm.com'
-    } elseif($userDom -match 'uamc')
-    {
-      $domainName = 'uamc.com'
-    }
+    $domainName = $userDom.TrimStart('dc=') + '.com'
     Get-ADUser $DistinguishedUsername -Server $domainName
   }
   END{}
